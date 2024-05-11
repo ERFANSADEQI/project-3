@@ -49,3 +49,14 @@ func publish(topic string, msg []byte) {
     }
 }
 
+func main() {
+	gin.SetMode(gin.ReleaseMode)
+	router := gin.Default()
+	router.GET("/ws/:topic", func(c *gin.Context) {
+		topic := c.Param("topic")
+        wsHandler(c.Writer, c.Request, topic)
+	})
+
+	router.SetTrustedProxies([]string{"127.0.0.1"})
+	router.Run(":8889")
+}
