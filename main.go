@@ -16,3 +16,5 @@ type Subscription struct {
 	Conn *websocket.Conn
 	Topic string
 }
+
+var subscriptions = make([] *Subscription, 0)
