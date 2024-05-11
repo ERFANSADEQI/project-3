@@ -11,3 +11,8 @@ var wsupgrader = websocket.Upgrader{
         return true
     },
 }
+
+type Subscription struct {
+	Conn *websocket.Conn
+	Topic string
+}
